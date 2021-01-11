@@ -1,0 +1,32 @@
+{
+    "name": "eShop_OOP",
+    "version": "1.0.0",
+    "description": "## Mission objectives In this challenge, you will implement as many back-end functionalities as possible in OOP.",
+    "main": "index.js",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
+        "mongodb": "^3.6.3",
+        "mongoose": "^5.11.10",
+        "request": "^2.88.2",
+        "validator": "^13.5.2"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.6"
+    },
+    "scripts": {
+        "start": "node app;js",
+        "dev": "nodemon app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/saranyakannan-v/eShop_OOP.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/saranyakannan-v/eShop_OOP/issues"
+    },
+    "homepage": "https://github.com/saranyakannan-v/eShop_OOP#readme"
+}
