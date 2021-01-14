@@ -7,8 +7,25 @@ const bodyParser = require('body-parser') // Body-parser is a middleware.They he
 const path = require('path')
 const mongoose = require('mongoose') // Mongoose is a library that makes MongoDB easier to use. 
 const routerUser = require('./routers/routerUser');
-const publicDirectoryPath = path.join(__dirname, './views') // Create a path to link a 'views' file and the browser will be able to access all assets in the views directory. 
+const publicDirectoryPath = path.join(__dirname, './public') // Create a path to link a 'views' file and the browser will be able to access all assets in the public directory. 
+const partialsDirectoryPath = path.join(__dirname, './partials')
+const viewsDirectoryPath = path.join(__dirname, './views')
 const url = 'mongodb+srv://eshop:mybecode@cluster0.vhjca.mongodb.net/eshop?retryWrites=true&w=majority'
+
+// Loads the handlebars module
+const hbs = require('hbs')
+
+// Sets our app to use the handlebars engine
+app.set('view engine', 'hbs')
+
+//Sets handlebars configurations
+app.use(express.static(publicDirectoryPath))
+hbs.registerPartials(partialsDirectoryPath)
+app.use(express.static(viewsDirectoryPath))
+
+app.get('/', (req, res) => {
+    res.render('index');
+})
 
 
 // Database Connection
@@ -32,21 +49,20 @@ db.on('error', err => {
 // Make sure you place body-parser before your CRUD handlers! - //local server: fetch data from the form + renders the html pages
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use(routerUser)
-
-app.use(express.static(publicDirectoryPath))
-
 
 // ------------HANDLERS------
 //  app.get - to set up a handler for an HTTP GET request.
 
-app.get('', (req, res) => {
-    res.render(publicDirectoryPath)
-})
+// app.get('/', (req, res) => {
+//     res.render(publicDirectoryPath)
+// })
 
 app.get('/register', (req, res) => {
     res.render("register")
 })
+
+
+app.use(routerUser)
 
 // to start the server - app.listen is the port you want to listen on browser
 app.listen(3000, () => {

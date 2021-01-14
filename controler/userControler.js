@@ -14,6 +14,17 @@ const userControler = {
             res.redirect("/")
         }
 
+    },
+    logUser: async(req, res) => {
+        console.log(req.body)
+        try {
+            const user = await User.findByCredentials(req.body.userName, req.body.password)
+            console.log("Welcome  " + user.userName)
+            res.render("index")
+        } catch (err) {
+            console.log(err)
+            res.redirect("/signIn.html")
+        }
     }
 }
 

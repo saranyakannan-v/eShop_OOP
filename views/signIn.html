@@ -104,18 +104,18 @@
 
 
 
-    <form class="needs-validation" novalidate>
+    <form class="needs-validation" novalidate method="POST" action="/signIn">
 
         <div class="mb-3">
             <label for="username">Username *</label>
             <div class="input-group">
-                <input type="text" class="form-control" id="username" placeholder="" required>
+                <input type="text" class="form-control" id="username" name="userName" placeholder="" required>
                 <div class="invalid-feedback" style="width: 100%;"> a username is required. </div>
             </div>
         </div>
         <div class="mb-3">
             <label for="email">Password*</label>
-            <input type="email" class="form-control" id="email" placeholder="">
+            <input type="email" class="form-control" id="email" name="password" placeholder="">
             <div class="invalid-feedback"> Wrong Credentials. </div>
         </div>
         </div>
